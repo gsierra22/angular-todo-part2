@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'solo-todo';
+  date = new Date()
+
+  constructor(){
+    
+  }
 }
