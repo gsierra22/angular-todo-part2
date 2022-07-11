@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Todo} from "./todo";
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'solo-todo';
-  date = new Date()
+  title = 'Todo-App';
 
-  constructor(){
-    
+  todoValue: string;
+  list: Todo[];
+
+  ngOnInit(){
+    this.list=[]
+    this.todoValue=""
   }
+
+  addTask(){
+    if (this.todoValue !==""){
+      const newTask: Todo = {
+        id: Date.now(),
+        value: this.todoValue,
+        isDone: false
+
+      };
+      this.list.push(newTask);
+    }
+    this.todoValue = ""
+  }
+
+  deleteTask(id: number){
+    this.list = this.list.filter(item => item.id !==id);
+  }
+  
 }

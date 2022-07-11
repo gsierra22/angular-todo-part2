@@ -10,13 +10,16 @@
 <br>
 <input type="text"
 class="input-text"
-placeholder="enter a task"/>
-<button class="add-btn">Add Task</button>
+placeholder="enter a task"
+[(ngModel)]="todoValue"
+(keyup.enter)="addTask()"/>
+<button class="add-btn" (click)="addTask()">Add Task</button>
 <div class="list">
   <ul>
-    <li>
-      <input type="checkbox" class="input-text" name="completed">
-      Task <button class="btn">Delete</button>
+    <li *ngFor="let item of list">
+      <input type="checkbox" class="input-text" name="isDone"
+      [(ngModel)]="item.isDone">
+      {{item.value}} <button class="btn" (click)="deleteTask(item.id)">Delete</button>
     </li>
   </ul>
 </div>
